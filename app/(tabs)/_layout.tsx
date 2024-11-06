@@ -55,27 +55,36 @@ export default function TabLayout() {
     
     return (
       <DrawerContentScrollView {...props}>
-        <View style={styles.profileContainer}>
-          <Image
-            source={{ uri: 'https://via.placeholder.com/100' }}
-            style={styles.profileImage}
-          />
-          <Text style={[styles.profileName, { color: Colors[colorScheme ?? 'light'].text }]}>
-            Nombre del Usuario
-          </Text>
+        <View style={styles.mainDrawerContainer}>
+          <View style={styles.profileContainer}>
+            <Image
+              source={{ uri: 'https://via.placeholder.com/100' }}
+              style={styles.profileImage}
+            />
+            <Text style={[styles.profileName, { color: Colors[colorScheme ?? 'light'].text }]}>
+              Nombre del Usuario
+            </Text>
+          </View>
+          
+          <View style={styles.drawerContainer}>
+            {/* Drawer Items personalizados */}
+            <View style={styles.itemsContainer}>
+              {/* Aquí van los otros ítems del drawer */}
+              <CustomDrawerItem label="Home" iconName="home-outline" onPress={() => props.navigation.navigate("index")} />
+              <CustomDrawerItem label="Explore" iconName="compass-outline" onPress={() => props.navigation.navigate("explore")} />
+              <CustomDrawerItem label="Configuration" iconName="settings-outline" onPress={() => props.navigation.navigate("config")} />
+              {/* Otros items adicionales... */}
+            </View>
+
+            {/* Boton para logout*/}
+            <TouchableOpacity style={styles.logoutContainer}>
+              <Ionicons name="log-out-outline" size={24} color={Colors[colorScheme ?? 'light'].text} />
+              <Text style={[styles.logoutText, { color: Colors[colorScheme ?? 'light'].text }]}>
+                Logout
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        
-        {/* Drawer Items personalizados */}
-        <CustomDrawerItem
-          label="Home"
-          iconName="home-outline"
-          onPress={() => props.navigation.navigate("index")}
-        />
-        <CustomDrawerItem
-          label="Explore"
-          iconName="compass-outline"
-          onPress={() => props.navigation.navigate("explore")}
-        />
       </DrawerContentScrollView>
     );
   }
@@ -146,7 +155,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  mainDrawerContainer: {
+  },
+  drawerContainer: {
+    height: '100%',
+    justifyContent: 'space-between',
+  },
   // drawer items styles
+  itemsContainer: {
+    paddingTop: 20,
+  },
   drawerItemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -155,6 +173,20 @@ const styles = StyleSheet.create({
     marginLeft: 8
   },
   drawerItemText: {
+    fontSize: 16,
+    marginLeft: 10,
+  },
+  // logout content styles
+  logoutContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+  },
+  logoutText: {
     fontSize: 16,
     marginLeft: 10,
   },
