@@ -45,7 +45,18 @@ export default function RootLayout() {
               <HeaderComponent title='Proyect Page' iconName='rocket' />
             ),
             headerLeft: () => null,
-            // headerBackTitleVisible: false,
+            headerBackTitle: 'back',
+            headerTintColor: '#F5A818',
+          }}
+        />
+        <Stack.Screen
+          name='taskPage'
+          options={{
+            headerTitle: () => (
+              <HeaderComponent title='Task Page' iconName='rocket' />
+            ),
+            headerLeft: () => null,
+            headerBackTitle: 'back',
             headerTintColor: '#F5A818',
           }}
         />
