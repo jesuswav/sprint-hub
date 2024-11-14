@@ -45,7 +45,7 @@ export default function RootLayout() {
               <HeaderComponent title='Proyect Page' iconName='rocket' />
             ),
             headerLeft: () => null,
-            headerBackTitleVisible: false,
+            // headerBackTitleVisible: false,
             headerTintColor: '#F5A818',
           }}
         />
